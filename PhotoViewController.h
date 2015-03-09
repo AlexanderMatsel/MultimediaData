@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  PhotoViewController.h
 //  MultimediaData
 //
-//  Created by Alexander on 30.09.14.
+//  Created by Alexander on 26.10.14.
 //  Copyright (c) 2014 Alexander. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface PhotoViewController : UIViewController
 
 @end

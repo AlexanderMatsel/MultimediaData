@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BookViewController.h
 //  MultimediaData
 //
 //  Created by Alexander on 30.09.14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface BookViewController : UIViewController
 
 @end

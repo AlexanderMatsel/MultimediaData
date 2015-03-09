@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Books" representedClassName="Books" syncable="YES">
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BooksAuthor" inverseName="books" inverseEntity="BooksAuthor" syncable="YES"/>
+        <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="book" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BooksGenre" inverseName="books" inverseEntity="BooksGenre" syncable="YES"/>
+    </entity>
+    <entity name="BooksAuthor" representedClassName="BooksAuthor" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Books" inverseName="author" inverseEntity="Books" syncable="YES"/>
+    </entity>
+    <entity name="BooksGenre" representedClassName="BooksGenre" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Books" inverseName="genre" inverseEntity="Books" syncable="YES"/>
+    </entity>
+    <entity name="Comics" representedClassName="Comics" syncable="YES">
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="comics" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ComicsPublisher" inverseName="comics" inverseEntity="ComicsPublisher" syncable="YES"/>
+    </entity>
+    <entity name="ComicsPublisher" representedClassName="ComicsPublisher" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comics" inverseName="publisher" inverseEntity="Comics" syncable="YES"/>
+    </entity>
+    <entity name="Comment" representedClassName="Comment" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Books" inverseName="comment" inverseEntity="Books" syncable="YES"/>
+        <relationship name="comics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comics" inverseName="comment" inverseEntity="Comics" syncable="YES"/>
+        <relationship name="music" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Music" inverseName="comment" inverseEntity="Music" syncable="YES"/>
+        <relationship name="other" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Other" inverseName="comment" inverseEntity="Other" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="comment" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="video" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Video" inverseName="comment" inverseEntity="Video" syncable="YES"/>
+    </entity>
+    <entity name="Music" representedClassName="Music" syncable="YES">
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MusicAlbum" inverseName="music" inverseEntity="MusicAlbum" syncable="YES"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MusicArtist" inverseName="music" inverseEntity="MusicArtist" syncable="YES"/>
+        <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="music" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MusicGenre" inverseName="music" inverseEntity="MusicGenre" syncable="YES"/>
+    </entity>
+    <entity name="MusicAlbum" representedClassName="MusicAlbum" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="music" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Music" inverseName="album" inverseEntity="Music" syncable="YES"/>
+    </entity>
+    <entity name="MusicArtist" representedClassName="MusicArtist" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="music" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Music" inverseName="artist" inverseEntity="Music" syncable="YES"/>
+    </entity>
+    <entity name="MusicGenre" representedClassName="MusicGenre" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="music" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Music" inverseName="genre" inverseEntity="Music" syncable="YES"/>
+    </entity>
+    <entity name="Other" representedClassName="Other" syncable="YES">
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="other" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="theme" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OtherTheme" inverseName="other" inverseEntity="OtherTheme" syncable="YES"/>
+    </entity>
+    <entity name="OtherTheme" representedClassName="OtherTheme" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="other" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Other" inverseName="theme" inverseEntity="Other" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="photo" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="theme" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoTheme" inverseName="photos" inverseEntity="PhotoTheme" syncable="YES"/>
+    </entity>
+    <entity name="PhotoTheme" representedClassName="PhotoTheme" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="theme" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="Video" representedClassName="Video" syncable="YES">
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="video" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VideoGenre" inverseName="video" inverseEntity="VideoGenre" syncable="YES"/>
+        <relationship name="quality" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VideoQuality" inverseName="video" inverseEntity="VideoQuality" syncable="YES"/>
+    </entity>
+    <entity name="VideoGenre" representedClassName="VideoGenre" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" inverseName="genre" inverseEntity="Video" syncable="YES"/>
+    </entity>
+    <entity name="VideoQuality" representedClassName="VideoQuality" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" inverseName="quality" inverseEntity="Video" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Books" positionX="-135" positionY="-126" width="128" height="118"/>
+        <element name="BooksAuthor" positionX="34" positionY="-234" width="128" height="73"/>
+        <element name="BooksGenre" positionX="72" positionY="-109" width="128" height="73"/>
+        <element name="Comment" positionX="-225" positionY="99" width="128" height="148"/>
+        <element name="Music" positionX="-216" positionY="308" width="128" height="133"/>
+        <element name="MusicAlbum" positionX="-450" positionY="234" width="128" height="73"/>
+        <element name="MusicArtist" positionX="-450" positionY="414" width="128" height="73"/>
+        <element name="MusicGenre" positionX="-225" positionY="485" width="128" height="73"/>
+        <element name="Photo" positionX="-18" positionY="419" width="128" height="103"/>
+        <element name="PhotoTheme" positionX="25" positionY="296" width="128" height="73"/>
+        <element name="Video" positionX="-450" positionY="81" width="128" height="118"/>
+        <element name="VideoGenre" positionX="-630" positionY="-45" width="128" height="73"/>
+        <element name="VideoQuality" positionX="-659" positionY="107" width="128" height="73"/>
+        <element name="Comics" positionX="16" positionY="18" width="128" height="103"/>
+        <element name="ComicsPublisher" positionX="43" positionY="198" width="128" height="73"/>
+        <element name="Other" positionX="-405" positionY="-81" width="128" height="103"/>
+        <element name="OtherTheme" positionX="-443" positionY="-190" width="128" height="73"/>
+    </elements>
+</model>
